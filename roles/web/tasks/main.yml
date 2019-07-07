@@ -1,0 +1,35 @@
+- name: Install nginx WEB Server, git
+  yum:
+    name: ['nginx', 'git']
+    state: latest
+- name: Create project directory
+  file:
+    path: /usr/share/nginx/global_proj
+    state: directory
+    mode: '0755'
+
+- name: Deploy project
+  git:
+    repo: "{{ project_url }}"
+    dest: /usr/share/nginx/global_proj
+
+- name: Change nginx config
+  replace:
+    path: /etc/nginx/nginx.conf
+    regexp: 'nginx\/html'
+    replace: 'nginx/global_proj/www'
+
+- name: Start web server
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+
+#  local_action: ec2_elb
+#  args:
+#    instance_id: "{{ item.id }}"
+#    ec2_elbs: glabal-elb
+#    state: present
+#    region: eu-west-1
+#  with_items: "{{ ec2_out.instances }}"

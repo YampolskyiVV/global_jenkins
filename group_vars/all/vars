@@ -1,0 +1,18 @@
+ec2:
+  instance_type: t2.micro
+  group: web_serv
+  image: ami-0f3eb76b0366d975f
+  keypair: ireland_global_my
+  region: eu-west-1
+  count: 1
+  vpc_subnet_id: subnet-e03489ba
+  wait: yes
+  assign_public_ip: yes
+  user: ec2-user
+  tags:
+    Name: web
+    Owner: Volodymyr Yampolskyi
+vars_files:
+  - group_vars/all/vault
+
+project_url: "https://github.com/dbielik/mdt.git"
