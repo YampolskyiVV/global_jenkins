@@ -2,8 +2,6 @@
 - hosts: local
   roles:
     - ec2_install
-  vars_files:
-    - ~/vault
 
 - hosts: launched
   user: ec2-user
