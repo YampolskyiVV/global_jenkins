@@ -12,7 +12,5 @@ ec2:
   tags:
     Name: student19-web
     Owner: Volodymyr Yampolskyi
-vars_files:
-  - group_vars/all/vault
 
 project_url: "https://github.com/dbielik/mdt.git"
