@@ -1,13 +1,10 @@
 - name: Lunch ec2 instanse
   ec2:
-    aws_access_key: "{{ ec2_access_key }}"
-    aws_secret_key: "{{ ec2_secret_key }}"
     instance_type: "{{ ec2.instance_type }}"
     group: "{{ ec2.group }}"
     image: "{{ ec2.image }}"
     keypair: "{{ ec2.keypair }}"
     region: "{{ ec2.region }}"
-#    count: "{{ ec2.count }}"
     vpc_subnet_id: "{{ ec2.vpc_subnet_id }}"
     instance_tags: "{{ ec2.tags }}"
     exact_count: 1
