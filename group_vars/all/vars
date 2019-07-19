@@ -1,16 +1,16 @@
 ec2:
   instance_type: t2.micro
-  group: web_serv
-  image: ami-0f3eb76b0366d975f
-  keypair: ireland_global_my
-  region: eu-west-1
+  group: student19-web-SG
+  image: ami-087c2c50437d0b80d 
+  keypair: student19-lab-home
+  region: us-west-2
   count: 1
-  vpc_subnet_id: subnet-e03489ba
+  vpc_subnet_id: subnet-04b417f61230eee61
   wait: yes
   assign_public_ip: yes
   user: ec2-user
   tags:
-    Name: web
+    Name: student19-web
     Owner: Volodymyr Yampolskyi
 vars_files:
   - group_vars/all/vault

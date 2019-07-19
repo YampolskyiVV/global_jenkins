@@ -1,7 +1,7 @@
 - name: Get list instance to deregister
   ec2_elb_facts:
-    names: glabal-elb
-    region: eu-west-1
+    names: student19-elb 
+    region: us-west-2
   register: inctanse_to_deregister
 - debug:
     var: inctanse_to_deregister
@@ -9,16 +9,16 @@
 - name: add the webservers to the load balancer
   ec2_elb:
     state: present
-    ec2_elbs: glabal-elb
-    region: eu-west-1
+    ec2_elbs: student19-elb
+    region: us-west-2
     instance_id: "{{ item.id }}"
   with_items: "{{ec2_out.instances}}"
 
 - name: Deregister old instance from ELB
   ec2_elb:
     state: 'absent'
-    ec2_elbs: glabal-elb
-    region: eu-west-1
+    ec2_elbs: student19-elb
+    region: us-west-2
     instance_id: "{{ item }}"
   with_items: "{{ inctanse_to_deregister.elbs.0.instances }}"
 

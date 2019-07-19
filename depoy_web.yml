@@ -3,7 +3,7 @@
   roles:
     - ec2_install
   vars_files:
-    - group_vars/all/vault
+    - ~/vault
 
 - hosts: launched
   user: ec2-user
